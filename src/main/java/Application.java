@@ -5,8 +5,8 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    final static List<Table> tables = TableRepository.tables();
-    final static List<Menu> menus = MenuRepository.menus();
+    private final static List<Table> tables = TableRepository.tables();
+    private final static List<Menu> menus = MenuRepository.menus();
 
     public static void main(String[] args) {
         final int ORDER = 1;
@@ -25,7 +25,7 @@ public class Application {
         } while (function != PROGRAM_END);
     }
 
-    public static void order() {
+    private static void order() {
         OutputView.printTables(tables);
         final int tableNumber = InputView.inputTableNumber();
         Table orderTable = null;
@@ -46,7 +46,7 @@ public class Application {
         }
     }
 
-    public static void payment() {
+    private static void payment() {
         OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumber();
         for (Table table : tables) {

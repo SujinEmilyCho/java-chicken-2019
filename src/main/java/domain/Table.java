@@ -27,7 +27,6 @@ public class Table {
     }
 
     public void addOrder(Order order) {
-
         bill.updateBill(order);
     }
 

@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bill {
-    final static int CASH = 2;
-    final static int CASH_DISCOUNT_PERCENT = 5;
-    final static int PER_EVERY_TEN = 10;
-    final static int TEN_THOUSAND = 10_000;
+    private final static int CASH = 2;
+    private final static int CASH_DISCOUNT_PERCENT = 5;
+    private final static int PER_EVERY_TEN = 10;
+    private final static int TEN_THOUSAND = 10_000;
     private List<Order> orders = new ArrayList<Order>();
 
     public Bill() {
@@ -44,12 +44,12 @@ public class Bill {
         return total;
     }
 
-    public int rewardDiscount() {
+    private int rewardDiscount() {
         int numberOfChickens = getChickenNumbers();
         return (numberOfChickens / PER_EVERY_TEN) * TEN_THOUSAND;
     }
 
-    public int getChickenNumbers() {
+    private int getChickenNumbers() {
         int number = 0;
         for (Order order : orders) {
             number += order.countChicken();
@@ -57,7 +57,7 @@ public class Bill {
         return number;
     }
 
-    public int cashDiscount(int total) {
+    private int cashDiscount(int total) {
         return (total * CASH_DISCOUNT_PERCENT) / 100;
     }
 }
