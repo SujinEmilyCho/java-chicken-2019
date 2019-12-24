@@ -32,6 +32,12 @@ public class Application {
         selectedTable.addOrder(new Order(selectedTable, menu, quantity));       // Order구조 다시 생각: Table 필드 필요한가?
     }
 
+    private static void pay() {
+        Table selectedTable = selectTable();
+        selectedTable.showOrders();
+        selectedTable.pay();
+    }
+
     private static Table selectTable() {
         OutputView.printTables(tables);
         final int tableNumber = InputView.inputTableNumber();
@@ -56,16 +62,5 @@ public class Application {
 
     private static int selectQuantity() {
         return InputView.inputQuantity();
-    }
-
-    private static void pay() {
-        OutputView.printTables(tables);
-        int tableNumber = InputView.inputTableNumber();
-        for (Table table : tables) {
-            if (table.equals(tableNumber)) {
-                table.showOrders();
-                table.pay();
-            }
-        }
     }
 }
