@@ -20,7 +20,7 @@ public class Application {
                 order();
             }
             if (function == PAY) {
-                payment();
+                pay();
             }
         } while (function != PROGRAM_END);
     }
@@ -29,7 +29,7 @@ public class Application {
         Table selectedTable = selectTable();
         Menu menu = selectMenu();
         int quantity = selectQuantity();
-        selectedTable.addOrder(new Order(selectedTable, menu, quantity));
+        selectedTable.addOrder(new Order(selectedTable, menu, quantity));       // Order구조 다시 생각: Table 필드 필요한가?
     }
 
     private static Table selectTable() {
@@ -45,7 +45,7 @@ public class Application {
 
     private static Menu selectMenu() {
         OutputView.printMenus(menus);
-        int menuNumber = InputView.inputMenu();
+        int menuNumber = InputView.inputMenuNumber();
         for (Menu menu : menus) {
             if (menu.equals(menuNumber)) {
                 return menu;
@@ -58,7 +58,7 @@ public class Application {
         return InputView.inputQuantity();
     }
 
-    private static void payment() {
+    private static void pay() {
         OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumber();
         for (Table table : tables) {
