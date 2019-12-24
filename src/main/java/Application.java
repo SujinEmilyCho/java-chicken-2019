@@ -26,24 +26,36 @@ public class Application {
     }
 
     private static void order() {
+        Table selectedTable = selectTable();
+        Menu menu = selectMenu();
+        int quantity = selectQuantity();
+        selectedTable.addOrder(new Order(selectedTable, menu, quantity));
+    }
+
+    private static Table selectTable() {
         OutputView.printTables(tables);
         final int tableNumber = InputView.inputTableNumber();
-        Table orderTable = null;
         for (Table table : tables) {
             if (table.equals(tableNumber)) {
-                orderTable = table;
+                return table;
             }
         }
+        return null;        // 예외 처리 때 수정하기
+    }
 
+    private static Menu selectMenu() {
         OutputView.printMenus(menus);
         int menuNumber = InputView.inputMenu();
-        int quantity = InputView.inputQuantity();
-        Order order = null;
         for (Menu menu : menus) {
             if (menu.equals(menuNumber)) {
-                orderTable.addOrder(new Order(orderTable, menu, quantity));
+                return menu;
             }
         }
+        return null;        // 예외 처리 때 수정하기
+    }
+
+    private static int selectQuantity() {
+        return InputView.inputQuantity();
     }
 
     private static void payment() {
